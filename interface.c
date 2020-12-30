@@ -82,7 +82,6 @@ void get_square(square* coordp){
   printf("\n");
   coordp->line = line-1;
   coordp->col = col-1;
-  
 }
 
 void ask_confirmation(char* conf_pointer){
@@ -92,12 +91,10 @@ void ask_confirmation(char* conf_pointer){
   fgets(buf,256,stdin);
   sscanf(buf,"%c",conf_pointer);
   printf("\n");
-
-  
 }
 
 void print_winner(board b, int board_size, int nb_players){
-  int* players_res = calloc(nb_players,sizeof(int)); //Tableau qui compte le nombre de jetons de chaque joueur sur le dessus du plateau à la fin de lz pzrtie
+  int* players_res = calloc(nb_players,sizeof(int)); //Tableau qui compte le nombre de jetons de chaque joueur sur le dessus du plateau à la fin de la partie
   int i,k;
 
   for (i = 0; i < nb_players; i++){
@@ -112,6 +109,8 @@ void print_winner(board b, int board_size, int nb_players){
       index_of_max = i;
     }
   }
+
+  free(players_res);
 
   printf("Le joueur %d remporte la partie !\n",index_of_max + 1);
 }
