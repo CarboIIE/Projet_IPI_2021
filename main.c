@@ -55,29 +55,3 @@ int main(int argc, char** argv){
   
   return 0;
 }
-  
-     
-
-  
-/*   user_coord.line = 2; */
-/*   user_coord.col = 1; */
-
-/*   square real_coord = upp_left_square(user_coord); */
-
-/*   push(1,&b[real_coord.line][real_coord.col]); */
-/*   push(1,&b[2][0]); */
-/*   /\* printf("Apres push : %d\n",is_activated(b[real_coord.line][real_coord.col])); *\/ */
-/*   print_matrix(b,board_size); */
-
-/*   play(1,&b,board_size,real_coord); */
-/*   /\* printf("Apres play : %d\n",is_activated(b[real_coord.line][real_coord.col])); *\/ */
-/*   print_matrix(b,board_size); */
-
-/*   /\* s_list l = empty_s_list(); *\/ */
-/*   /\* available_squares(&l,coord,b,board_size); *\/ */
-/*   /\* print_s_list(l); *\/ */
-
-/*   return 0; */
-/*   //  } */
-/*   //  } */
-/* } */
