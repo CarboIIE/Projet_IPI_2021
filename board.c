@@ -34,14 +34,6 @@ square pop_s_list(s_list* lp){
   return real_coord;
 }
 
-void print_s_list(s_list l){
-  while (l != NULL){
-    printf("(%d,%d)",low_right_square(l->coord).line,low_right_square(l->coord).col);
-    l = l->next;
-  }
-  printf("\n");
-}
-
 square left_square(square coord){
   square left = coord;
   left.col--;
@@ -74,6 +66,14 @@ square low_right_square(square coord){
   return lower_square(right_square(coord));
 }
 
+/*Ici je traite exhaustivement tous les cas limites de position des cases.
+  Les cases adjacentes qui sont creees dans la fontcion le sont uniquement si on s'est deja assure
+  qu'elles existent bien.
+  Le but est que lorsqu'on voudra jouer un jeton sur une case et que celle-ci s'activera,
+  les jetons du joueur ne se poseront pas sur les cases ou il n'est pas possible de le faire :
+    - celles qui font sortir du plateau
+    - celles qui ont deja ete activee pendant le tour du joueur
+  Cette procedure permet donc le bon fonctionnement de la fonction play. */
 void available_squares(s_list* lp, square real_coord, board b, int board_size){
 
   square coord = real_coord;
