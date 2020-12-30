@@ -25,8 +25,14 @@ void print_board(board b, int board_size);
   ensures affecte les coordonnees d'une case, rentrees par le joueur, dans *coordp */
 void get_square(square* coordp);
 
+/*@requires *conf_pointer bien defini comme variable de confirmation dans le main
+  assigns *conf_pointer
+  ensures *conf_pointer a 'n' si l'utilisateur ne veut pas joueur sur la case qu'il avait selectionne, 'o' sinon */
 void ask_confirmation(char* conf_pointer);
 
+/*@requires board_size la taille du plateau b, nb_players > 0
+  assigns nothing
+  ensures affiche le joueur qui a remporte la partie */
 void print_winner(board b, int board_size, int nb_players);
 
 #endif
