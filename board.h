@@ -3,6 +3,12 @@
 
 #include "stack.h"
 
+
+
+/*--------------------------------- INTERFACE DES LISTES DE CASES ---------------------------------*/
+
+
+
 //Type case (square) qui permettra de plus facilement acceder a une case du plateau
 typedef struct square{
   int line;
@@ -18,26 +24,54 @@ typedef int player;
 //Type concret du plateau qui est donc une matrice dont les elements sont des piles
 typedef stack** board;
 
+/*@requires nothing
+  assigns une square_list
+  ensures retourne une square_list vide */
 s_list empty_s_list();
 
+/*@requires l valide
+  assigns nothing
+  ensures retourne 1 si l est vide, 0 sinon */
 int is_empty_s_list(s_list l);
 
+/*@requires *lp valide et d'adresse valide, lp valide, coord valide
+  assigns *lp
+  ensures rajoute coord a *lp */
 void push_s_list(square coord, s_list* lp);
 
+/*@requires *lp valide et d'adresse valide
+  assigns *lp
+  ensures retourne le dernier element ajoute a *lp */
 square pop_s_list(s_list* lp);
 
-void print_s_list(s_list l);
-
+/*@requires coord valide
+  assigns nothing
+  ensures retourne la case a gauche de celle passee en parametre si possible */
 square left_square(square coord);
 
+/*@requires coord valide
+  assigns nothing
+  ensures retourne la case au-dessus de celle passee en parametre si possible */
 square upper_square(square coord);
 
+/*@requires coord valide
+  assigns nothing
+  ensures retourne la case a droite de celle passee en parametre si possible */
 square right_square(square coord);
 
+/*@requires coord valide
+  assigns nothing
+  ensures retourne en-dessous de celle passee en parametre si possible */
 square lower_square(square coord);
 
+/*@requires coord valide
+  assigns nothing
+  ensures retourne la case en haut a gauche de celle passee en parametre si possible */
 square upp_left_square(square coord);
 
+/*@requires coord valide
+  assigns nothing
+  ensures retourne la case en bas a droite de celle passee en parametre si possible */
 square low_right_square(square coord);
 
 /*@requires *lp liste et adresse valides
@@ -45,7 +79,11 @@ square low_right_square(square coord);
   ensures retourne retourne les cases adjacentes ou il est possible de jouer */
 void available_squares(s_list* lp, square coord, board b, int board_size);
 
-//Signatures des procedures et fonctions gerant le plateau en soi
+
+
+/*--------------------------------- INTERFACE DU PLATEAU ---------------------------------*/
+
+
 
 /*@requires nothing
   assigns un plateau
@@ -62,10 +100,10 @@ int is_board_full(board b, int board_size);
   ensures libere le plateau une fois que la partie est terminee */
 void free_board(board* bp, int board_size);
 
+/*@requires *bp valide et d'adresse valide, bp valide
+  assigns *bp
+  ensures desactive toutes les cases activees pendant un tour a la fin de celui-ci */
 void desactivate_board(board* bp, int board_size);
-
-//Fonction temporaire d'affichage pour voir le plateau
-void print_matrix(board b, int board_size);
 
 /*@requires *bp[real_coord.line][real_coord.col] pile et adresse valides et
             bp[real_coord.line][real_coord.col] valide
